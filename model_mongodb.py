@@ -28,7 +28,7 @@ class Model(dict):
 
     def remove(self):
         if self._id:
-            resp = self.collection.remove({"_id": ObjectId(self._id)})
+            resp = self.collection.delete_one({"_id": ObjectId(self._id)})
             self.clear()
             return resp
 
@@ -55,3 +55,17 @@ class User(Model):
         for user in users:
             user["_id"] = str(user["_id"])
         return users
+
+# add find_by_job and find_by_name_and_job for final version
+
+    def find_by_job(self, job):
+        users = list(self.collection.find({"job": job}))
+        for user in users:
+            user["_id"] = str(user["_id"])
+        return users
+
+    def find_by_name_and_job(self, name, job):     
+        users = list(self.collection.find({"name": name, "job": job}))
+        for user in users:
+            user["_id"] = str(user["_id"])
+        return users   
