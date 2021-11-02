@@ -2,23 +2,22 @@ import pytest
 import sample_backend
 
 def test_find_users_by_name_success():  
-    expected = { 
-        'users_list' :
-        [
-            {
-                'id' : 'abc123',            
-                'name': 'Mac',
-                'job': 'Bouncer',
-            },
-            {
-                'id' : 'ppp222',            
-                'name': 'Mac',
-                'job': 'Professor',
-            },        
-        ]
-    }  
-    assert sample_backend.find_users_by_name("Mac") == expected
+    expected = [           
+        {
+           '_id' : '6009dfa508f2eca30c87d56c',            
+            'name': 'Mac',
+            'job': 'Professor',
+        },   
+        {
+            '_id' : '61817557d1b11d226de426dd',            
+            'name': 'Mac',
+            'job': 'Bartender',
+        },
+    ]
+    
+    print(sample_backend.User().find_by_name("Mac"))
+    assert sample_backend.User().find_by_name("Mac") == expected
 
-def test_find_users_by_name_fail():  
-    expected = {'users_list' : []}
-    assert sample_backend.find_users_by_name("Jeff") == expected
+def test_find_by_name_fail():  
+    expected = []
+    assert sample_backend.User().find_by_name("Jeff") == expected

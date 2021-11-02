@@ -58,6 +58,7 @@ class User(Model):
         users = list(self.collection.find({"name": name}))
         for user in users:
             user["_id"] = str(user["_id"])
+            print(user)
         return users
 
 # add find_by_job and find_by_name_and_job for final version
