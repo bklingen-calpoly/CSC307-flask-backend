@@ -5,7 +5,7 @@ def test_find_users_by_name_success():
     expected = [           
         {
            '_id' : '6009dfa508f2eca30c87d56c',            
-            'name': 'Mac',
+            'name': 'Macc',
             'job': 'Professor',
         },   
         {
@@ -15,7 +15,6 @@ def test_find_users_by_name_success():
         },
     ]
     
-    print(sample_backend.User().find_by_name("Mac"))
     assert sample_backend.User().find_by_name("Mac") == expected
 
 def test_find_by_name_fail():  
